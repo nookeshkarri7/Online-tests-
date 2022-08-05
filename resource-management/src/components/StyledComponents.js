@@ -8,6 +8,7 @@ export const Image = styled.img`
   height:60px;
   width:60px;
   ${props => props.user && `width:40px;height:40px;border-radius:100px;`}
+  ${props => props.item && `width:36px;height:36px;`}
 `
 
 export const HeaderDiv = styled.div`
@@ -92,4 +93,58 @@ export const SearchBarInput = styled.input`
     {
         outline:none!important;
     }
+`
+export const ItemMainDiv = styled.div`
+    display:flex;
+    flex-direction:column;
+    padding:15px;
+    border: 1px solid #D7DFE9;
+    border-radius: 4px;
+    width:360px;
+    margin-right:10px;
+    margin-bottom:10px;
+    flex-wrap:wrap;
+`
+export const ItemTitleDiv = styled.div`
+    display:flex;
+    flex-direction:column;
+    margin-left:10px;
+    
+`
+export const ItemDiv = styled.div`
+    display:flex;
+    flex-direction:row;
+`
+export const ItemImageDiv = styled.div`
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    background: #FFFFFF;
+    border: 2px solid #D7DFE9;
+    border-radius: 4px;
+    padding:5px;
+    height:40px;
+`
+export const ItemTitle = styled.p`
+    font-family: 'HK Grotesk';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom:-10px;
+    margin-top:1px;
+`
+export const Itemp = styled.p`
+    font-family: 'HK Grotesk';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    color: #7E858E;
+`
+export const ItemLink = styled.a`
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    color: #0B69FF;
 `
