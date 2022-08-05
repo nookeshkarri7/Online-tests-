@@ -7,9 +7,7 @@ const Item = ({ data, type }) => {
     const { category,
         description,
         icon_url,
-        id,
         link,
-        tag,
         title } = data
     return (
         <ItemMainDiv >

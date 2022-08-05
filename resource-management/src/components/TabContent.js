@@ -8,11 +8,11 @@ import { storeResources } from '../redux/slicer'
 
 const TabContent = () => {
     const [data, setData] = useState([])
-    const { selectedTag, allResources } = useSelector(({ adminReducer }) => adminReducer)
+    const { selectedTag, allResources, searchInput } = useSelector(({ adminReducer }) => adminReducer)
     const dispatch = useDispatch()
     useEffect(() => {
         getResourceData()
-    }, [selectedTag])
+    }, [selectedTag, searchInput])
 
     const getResourceData = async () => {
         let data = {};
@@ -22,11 +22,10 @@ const TabContent = () => {
         } else {
             data.data = allResources
         }
-
         if (selectedTag === "all") {
-            setData(data.data)
+            setData(data.data.filter((eachItem) => eachItem.title.toLowerCase().includes(searchInput.toLowerCase())))
         } else {
-            setData(data.data.filter((eachItem) => eachItem.tag === selectedTag))
+            setData(data.data.filter((eachItem) => eachItem.tag === selectedTag && eachItem.title.toLowerCase().includes(searchInput.toLowerCase())))
         }
 
     }
