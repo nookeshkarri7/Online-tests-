@@ -9,6 +9,8 @@ const initialState = {
     searchInput: '',
     searchPage: 'resourceSearch',
     allResources: [],
+    viewItem: 0,
+    subItems: []
 }
 const adminSlice = createSlice({
     name: "admin",
@@ -22,8 +24,14 @@ const adminSlice = createSlice({
         },
         storeResources: (state, action) => {
             state.allResources = action.payload
-        }
+        },
+        storeViewItem: (state, action) => {
+            state.viewItem = action.payload
+        },
+        storeSubData: (state, action) => {
+            return { ...state, ...action.payload }
+        },
     }
 })
-export const { changeTab, changeSearchInput, storeResources } = adminSlice.actions
+export const { changeTab, changeSearchInput, storeResources, storeViewItem, storeSubData } = adminSlice.actions
 export default adminSlice.reducer

@@ -5,10 +5,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import Item from './Item'
 import axios from 'axios'
 import { storeResources } from '../redux/slicer'
+import TabMenu from './TabMenu';
+import ViewItem from './ViewItem';
 
 const TabContent = () => {
     const [data, setData] = useState([])
-    const { selectedTag, allResources, searchInput } = useSelector(({ adminReducer }) => adminReducer)
+    const { selectedTag, allResources, searchInput, viewItem } = useSelector(({ adminReducer }) => adminReducer)
     const dispatch = useDispatch()
     useEffect(() => {
         getResourceData()
@@ -31,12 +33,15 @@ const TabContent = () => {
     }
 
     return (<MainDiv>
-        <SearchBar placeholder='Search' type='resourceSearch' />
-        <AllItemsDiv>
-            {data.map((each) =>
-                <Item data={each} type key={"items" + each.tag + each.id} />
-            )}
-        </AllItemsDiv>
+        {viewItem === 0 ? <>
+            <TabMenu />
+            <SearchBar placeholder='Search' type='resourceSearch' />
+            <AllItemsDiv>
+                {data.map((each) =>
+                    <Item data={each} type key={"items" + each.tag + each.id} view={false} />
+                )}
+            </AllItemsDiv>
+        </> : <ViewItem />}
     </MainDiv>
     )
 }

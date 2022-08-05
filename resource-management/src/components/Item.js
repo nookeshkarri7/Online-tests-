@@ -1,26 +1,29 @@
 import React from 'react'
 import { ItemMainDiv, ItemDiv, ItemImageDiv, ItemTitleDiv, Image, ItemTitle, Itemp, ItemLink } from './StyledComponents'
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { storeViewItem } from '../redux/slicer'
 
-
-const Item = ({ data, type }) => {
+const Item = ({ data, type, view }) => {
+    console.log("🚀 ~ file: Item.js ~ line 7 ~ Item ~ view", view)
+    const dispatch = useDispatch()
     const { category,
         description,
         icon_url,
         link,
-        title } = data
+        title, id } = data
     return (
-        <ItemMainDiv >
+        <ItemMainDiv onClick={() => { if (!view) { dispatch(storeViewItem(id)) } }}>
             <ItemDiv>
-                <ItemImageDiv>
-                    <Image src={icon_url} item={type} />
+                <ItemImageDiv view={view}>
+                    <Image src={icon_url} item={type} view={view} />
                 </ItemImageDiv>
                 <ItemTitleDiv>
                     <ItemTitle>{title}</ItemTitle>
                     <Itemp>{category}</Itemp>
+                    {view && <ItemLink href={link} target='_blank'>{link}</ItemLink>}
                 </ItemTitleDiv>
             </ItemDiv>
-            <ItemLink href={link} target='_blank'>{link}</ItemLink>
+            {!view && <ItemLink href={link} target='_blank'>{link}</ItemLink>}
             <Itemp>{description}</Itemp>
         </ItemMainDiv>
     )

@@ -9,6 +9,9 @@ export const Image = styled.img`
   width:60px;
   ${props => props.user && `width:40px;height:40px;border-radius:100px;`}
   ${props => props.item && `width:36px;height:36px;`}
+  ${props => props.view && `width:40px;height:36px;border-radius:100px;`}
+  ${props => props.back && `width:12px;height:07px;margin-top:18px;`}
+
 `
 
 export const HeaderDiv = styled.div`
@@ -112,6 +115,7 @@ export const ItemMainDiv = styled.div`
     width:360px;
     margin-right:10px;
     margin-bottom:10px;
+    cursor:pointer;
 `
 export const ItemTitleDiv = styled.div`
     display:flex;
@@ -122,6 +126,7 @@ export const ItemTitleDiv = styled.div`
 export const ItemDiv = styled.div`
     display:flex;
     flex-direction:row;
+    ${props => props.pointer && 'cursor:pointer;margin-bottom:10px;'}
 `
 export const ItemImageDiv = styled.div`
     display:flex;
@@ -132,6 +137,7 @@ export const ItemImageDiv = styled.div`
     border-radius: 4px;
     padding:5px;
     height:40px;
+    ${props => props.view && `padding:10px;border-radius:100px; `}
 `
 export const ItemTitle = styled.p`
     font-weight: 500;
@@ -152,4 +158,15 @@ export const ItemLink = styled.a`
     font-size: 14px;
     line-height: 24px;
     color: #0B69FF;
+`
+
+export const ViewItemDiv = styled.div`
+    
+`
+
+export const Backp = styled.p`
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: #7E858E;
 `
