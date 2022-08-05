@@ -10,8 +10,8 @@ export const Image = styled.img`
   ${props => props.user && `width:40px;height:40px;border-radius:100px;`}
   ${props => props.item && `width:36px;height:36px;`}
   ${props => props.view && `width:40px;height:36px;border-radius:100px;`}
-  ${props => props.back && `width:12px;height:07px;margin-top:18px;`}
-
+  ${props => props.back && `width:12px;height:07px;`}
+  ${props => props.sortby && 'width:15px;height:15px;cursor:pointer;margin-left:15px;margin-right:5px;'}
 `
 
 export const HeaderDiv = styled.div`
@@ -26,6 +26,7 @@ export const HeaderDiv = styled.div`
         border-width:0px 0px 2px 0px;
         border-style: solid;
         border-bottom-color: #D7DFE9;
+        background:#fff;
     `
 export const ImageUserDiv = styled.div`
     
@@ -73,6 +74,7 @@ export const SearchBarMainDiv = styled.div`
     padding:8px;
     margin-top:20px;
     margin-bottom:20px;
+    background:#fff;
 `
 
 export const SearchBarDiv = styled.div`
@@ -116,6 +118,7 @@ export const ItemMainDiv = styled.div`
     margin-right:10px;
     margin-bottom:10px;
     cursor:pointer;
+    background:#fff;
 `
 export const ItemTitleDiv = styled.div`
     display:flex;
@@ -126,7 +129,10 @@ export const ItemTitleDiv = styled.div`
 export const ItemDiv = styled.div`
     display:flex;
     flex-direction:row;
+    align-items:center;
     ${props => props.pointer && 'cursor:pointer;margin-bottom:10px;'}
+    ${props => props.view && 'justify-content:flex-end;'}
+
 `
 export const ItemImageDiv = styled.div`
     display:flex;
@@ -145,6 +151,7 @@ export const ItemTitle = styled.p`
     line-height: 24px;
     margin-bottom:-10px;
     margin-top:1px;
+    ${props => props.alignLeft && `margin-right:auto;font-size:    24px ;color:#171F46;`}
 `
 export const Itemp = styled.p`
 
@@ -152,6 +159,9 @@ export const Itemp = styled.p`
     font-size: 14px;
     line-height: 24px;
     color: #7E858E;
+    &:hover{
+        background: rgba(215, 223, 233, 0.24);
+    }
 `
 export const ItemLink = styled.a`
     font-weight: 400;
@@ -169,4 +179,16 @@ export const Backp = styled.p`
     font-size: 12px;
     line-height: 16px;
     color: #7E858E;
+`
+export const SortDiv = styled.div`
+        width:136px;
+        height:134px;
+        background: #FFFFFF;
+        border-radius: 4px;
+        position:fixed;
+        right:5%;
+        cursor:pointer;
+        box-shadow:1px;
+        padding:10px;
+        margin-top:-10px;
 `
