@@ -34,7 +34,9 @@ const TabContent = () => {
     return (<MainDiv>
         <SearchBar placeholder='Search' type='resourceSearch' />
         <AllItemsDiv>
-            {data.map((each) => <Item data={each} type />)}
+            {data.map((each) =>
+                <Item data={each} type key={"items" + each.tag + each.id} />
+            )}
         </AllItemsDiv>
     </MainDiv>
     )

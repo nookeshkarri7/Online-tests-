@@ -12,7 +12,7 @@ const Item = ({ data, type }) => {
         tag,
         title } = data
     return (
-        <ItemMainDiv key={"items" + id}>
+        <ItemMainDiv >
             <ItemDiv>
                 <ItemImageDiv>
                     <Image src={icon_url} item={type} />
