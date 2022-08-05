@@ -1,11 +1,8 @@
-import logo from './logo.svg';
-
+import TabMenu from '../src/components/TabMenu'
 function App() {
   return (
     <div className="App">
-      <p>trsts
-
-      </p>
+      <TabMenu />
     </div>
   );
 }
