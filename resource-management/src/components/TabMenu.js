@@ -8,13 +8,13 @@ const TabMenu = () => {
     const selectedTabId = useSelector(({ adminReducer }) => adminReducer.selectedTabId)
     const dispatch = useDispatch()
 
-    const changeTabFun = (id) => {
-        dispatch(changeTab({ selectedTabId: id }))
+    const changeTabFun = (id, tag) => {
+        dispatch(changeTab({ selectedTabId: id, selectedTag: tag }))
     }
 
     const renderTabs = (eachTab) => {
         return (
-            <TabMenuDiv key={"tabs" + eachTab.id} selected={eachTab.id === selectedTabId} onClick={() => changeTabFun(eachTab.id)}>
+            <TabMenuDiv key={"tabs" + eachTab.id} selected={eachTab.id === selectedTabId} onClick={() => changeTabFun(eachTab.id, eachTab.tag)}>
                 <TabMenuP selected={eachTab.id === selectedTabId}>{eachTab.title}</TabMenuP>
             </TabMenuDiv>
         )

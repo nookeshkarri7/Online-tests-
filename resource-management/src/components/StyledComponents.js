@@ -54,8 +54,6 @@ export const TabMenuDiv = styled.div`
     ${props => props.selected ? 'background: #0B69FF;' : 'background: rgba(215, 223, 233, 0.24)'}
 `
 export const TabMenuP = styled.p`
-    font-family: 'HK Grotesk';
-    font-style: normal;
     font-weight: 600;
     text-align: center;
     color:${props => props.selected ? '#FFFFFF;' : 'black'}
@@ -136,8 +134,6 @@ export const ItemImageDiv = styled.div`
     height:40px;
 `
 export const ItemTitle = styled.p`
-    font-family: 'HK Grotesk';
-    font-style: normal;
     font-weight: 500;
     font-size: 16px;
     line-height: 24px;
@@ -145,8 +141,7 @@ export const ItemTitle = styled.p`
     margin-top:1px;
 `
 export const Itemp = styled.p`
-    font-family: 'HK Grotesk';
-    font-style: normal;
+
     font-weight: 400;
     font-size: 14px;
     line-height: 24px;

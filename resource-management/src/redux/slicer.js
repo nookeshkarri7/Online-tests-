@@ -1,13 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-    tabs: [{ id: 1, title: 'Resources' },
-    { id: 2, title: 'Requests' },
-    { id: 3, title: 'Users' }],
+    tabs: [{ id: 1, title: 'Resources', tag: "all" },
+    { id: 2, title: 'Requests', tag: "request" },
+    { id: 3, title: 'Users', tag: "user" }],
     selectedTabId: 1,
+    selectedTag: "all",
     searchInput: '',
     searchPage: 'resourceSearch',
-    allResources: []
+    allResources: [],
 }
 const adminSlice = createSlice({
     name: "admin",
@@ -20,9 +21,9 @@ const adminSlice = createSlice({
             return { ...state, ...action.payload }
         },
         storeResources: (state, action) => {
-            return { ...state, ...action.payload }
+            state.allResources = action.payload
         }
     }
 })
-export const { changeTab, changeSearchInput } = adminSlice.actions
+export const { changeTab, changeSearchInput, storeResources } = adminSlice.actions
 export default adminSlice.reducer
