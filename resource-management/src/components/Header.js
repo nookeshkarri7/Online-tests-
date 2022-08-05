@@ -6,16 +6,16 @@ import { Image, HeaderDiv, ImageUserDiv } from './StyledComponents'
 const Header = () => {
 
     const renderHeader = () => {
-        return <HeaderDiv>
+        return <>
             <Image src={logo} />
             <ImageUserDiv>
                 <Image src={userImg} user />
             </ImageUserDiv>
-        </HeaderDiv>
+        </>
     }
 
     return (
-        <div>{renderHeader()}</div>
+        <HeaderDiv>{renderHeader()}</HeaderDiv>
     )
 }
 export default Header

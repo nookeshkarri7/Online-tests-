@@ -1,14 +1,21 @@
 import React from 'react'
 import { TabMenuDiv, TabMenuMainDiv, TabMenuP } from './StyledComponents'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { changeTab } from '../redux/slicer'
 
 const TabMenu = () => {
     const tabs = useSelector(({ adminReducer }) => adminReducer.tabs)
+    const selectedTabId = useSelector(({ adminReducer }) => adminReducer.selectedTabId)
+    const dispatch = useDispatch()
+
+    const changeTabFun = (id) => {
+        dispatch(changeTab({ selectedTabId: id }))
+    }
 
     const renderTabs = (eachTab) => {
         return (
-            <TabMenuDiv key={"tabs" + eachTab.id} selected={eachTab.selected}>
-                <TabMenuP selected={eachTab.selected}>{eachTab.title}</TabMenuP>
+            <TabMenuDiv key={"tabs" + eachTab.id} selected={eachTab.id === selectedTabId} onClick={() => changeTabFun(eachTab.id)}>
+                <TabMenuP selected={eachTab.id === selectedTabId}>{eachTab.title}</TabMenuP>
             </TabMenuDiv>
         )
     }

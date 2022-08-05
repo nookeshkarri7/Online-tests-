@@ -18,7 +18,7 @@ export const HeaderDiv = styled.div`
         display:flex;
         flex-direction:row;
         justify-content:space-between;
-        height:50px;
+        height:40px;
         border-width:0px 0px 2px 0px;
         border-style: solid;
         border-bottom-color: #D7DFE9;
@@ -49,6 +49,7 @@ export const TabMenuDiv = styled.div`
     width:200px;
     border: 1px solid #D7DFE9;
     border-radius:2px;
+    cursor:pointer;
     ${props => props.selected ? 'background: #0B69FF;' : 'background: rgba(215, 223, 233, 0.24)'}
 `
 export const TabMenuP = styled.p`
