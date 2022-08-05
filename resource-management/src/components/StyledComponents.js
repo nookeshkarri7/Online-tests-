@@ -59,3 +59,37 @@ export const TabMenuP = styled.p`
     text-align: center;
     color:${props => props.selected ? '#FFFFFF;' : 'black'}
 `
+
+// SearchBarDiv, SearchBarInput 
+export const SearchBarMainDiv = styled.div`
+    border: 1px solid #D7DFE9;
+    border-radius: 3px;
+    width:500px;
+    display:flex;
+    flex-direction:row;
+    height:25px;
+    padding:8px;
+    margin-top:20px
+`
+
+export const SearchBarDiv = styled.div`
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+`
+export const SearchBarIcon = styled.img`
+    width:12px;
+    height:12px;
+    margin-right:10px;
+`
+
+export const SearchBarInput = styled.input`
+    width:100%;
+    padding:7px;
+    height:10px;
+    border:0;outline:0;
+    input:focus 
+    {
+        outline:none!important;
+    }
+`
