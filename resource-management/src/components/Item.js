@@ -3,20 +3,27 @@ import { ItemMainDiv, ItemDiv, ItemImageDiv, ItemTitleDiv, Image, ItemTitle, Ite
 import { useDispatch, useSelector } from 'react-redux';
 
 
-const Item = ({ imgSrc, type }) => {
+const Item = ({ data, type }) => {
+    const { category,
+        description,
+        icon_url,
+        id,
+        link,
+        tag,
+        title } = data
     return (
-        <ItemMainDiv>
+        <ItemMainDiv key={"items" + id}>
             <ItemDiv>
                 <ItemImageDiv>
-                    <Image src={imgSrc} item={type} />
+                    <Image src={icon_url} item={type} />
                 </ItemImageDiv>
                 <ItemTitleDiv>
-                    <ItemTitle>Dropbox,inc</ItemTitle>
-                    <Itemp>Dropbox,inc</Itemp>
+                    <ItemTitle>{title}</ItemTitle>
+                    <Itemp>{category}</Itemp>
                 </ItemTitleDiv>
             </ItemDiv>
-            <ItemLink >Dropbox,inc</ItemLink>
-            <Itemp>Dropbox,inc</Itemp>
+            <ItemLink href={link} target='_blank'>{link}</ItemLink>
+            <Itemp>{description}</Itemp>
         </ItemMainDiv>
     )
 }

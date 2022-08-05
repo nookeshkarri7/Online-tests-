@@ -70,7 +70,8 @@ export const SearchBarMainDiv = styled.div`
     flex-direction:row;
     height:25px;
     padding:8px;
-    margin-top:20px
+    margin-top:20px;
+    margin-bottom:20px;
 `
 
 export const SearchBarDiv = styled.div`
@@ -94,6 +95,16 @@ export const SearchBarInput = styled.input`
         outline:none!important;
     }
 `
+export const MainDiv = styled.div`
+    padding:15px;
+    padding-left:5%;
+    padding-right:5%;
+`
+export const AllItemsDiv = styled.div`
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap 
+`
 export const ItemMainDiv = styled.div`
     display:flex;
     flex-direction:column;
@@ -103,7 +114,6 @@ export const ItemMainDiv = styled.div`
     width:360px;
     margin-right:10px;
     margin-bottom:10px;
-    flex-wrap:wrap;
 `
 export const ItemTitleDiv = styled.div`
     display:flex;

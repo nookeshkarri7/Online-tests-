@@ -6,7 +6,8 @@ const initialState = {
     { id: 3, title: 'Users' }],
     selectedTabId: 1,
     searchInput: '',
-    searchPage: 'resourceSearch'
+    searchPage: 'resourceSearch',
+    allResources: []
 }
 const adminSlice = createSlice({
     name: "admin",
@@ -16,6 +17,9 @@ const adminSlice = createSlice({
             return { ...state, ...action.payload }
         },
         changeSearchInput: (state, action) => {
+            return { ...state, ...action.payload }
+        },
+        storeResources: (state, action) => {
             return { ...state, ...action.payload }
         }
     }
