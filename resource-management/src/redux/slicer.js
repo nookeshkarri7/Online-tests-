@@ -11,7 +11,9 @@ const initialState = {
     allResources: [],
     viewItem: 0,
     subItems: [],
-    showSortBy: false
+    showSortBy: false,
+    sortByType: 'recent',
+    checked: []
 }
 const adminSlice = createSlice({
     name: "admin",
@@ -35,7 +37,10 @@ const adminSlice = createSlice({
         changeSortAction: (state, action) => {
             return { ...state, ...action.payload }
         },
+        deleteAction: (state, action) => {
+            return { ...state, ...action.payload }
+        },
     }
 })
-export const { changeTab, changeSearchInput, storeResources, storeViewItem, storeSubData, changeSortAction } = adminSlice.actions
+export const { changeTab, changeSearchInput, storeResources, storeViewItem, storeSubData, changeSortAction, deleteAction } = adminSlice.actions
 export default adminSlice.reducer

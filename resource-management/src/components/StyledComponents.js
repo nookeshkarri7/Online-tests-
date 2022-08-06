@@ -97,6 +97,7 @@ export const SearchBarInput = styled.input`
     {
         outline:none!important;
     }
+    ${props => props.checkbox && 'height:15px;background:#D7DFE9;'}
 `
 export const MainDiv = styled.div`
     padding:15px;
@@ -119,6 +120,7 @@ export const ItemMainDiv = styled.div`
     margin-bottom:10px;
     cursor:pointer;
     background:#fff;
+    ${props => props.bgChange && 'background:#F5F5F5;border-width:0px;'}
 `
 export const ItemTitleDiv = styled.div`
     display:flex;
@@ -132,6 +134,7 @@ export const ItemDiv = styled.div`
     align-items:center;
     ${props => props.pointer && 'cursor:pointer;margin-bottom:10px;'}
     ${props => props.view && 'justify-content:flex-end;'}
+    
 
 `
 export const ItemImageDiv = styled.div`
@@ -162,12 +165,15 @@ export const Itemp = styled.p`
     &:hover{
         background: rgba(215, 223, 233, 0.24);
     }
+    ${props => props.highlight && `background: rgba(215, 223, 233, 0.24);`}
 `
 export const ItemLink = styled.a`
     font-weight: 400;
     font-size: 14px;
     line-height: 24px;
     color: #0B69FF;
+    cursor:pointer;
+    text-decoration:none;
 `
 
 export const ViewItemDiv = styled.div`
@@ -185,10 +191,10 @@ export const SortDiv = styled.div`
         height:134px;
         background: #FFFFFF;
         border-radius: 4px;
-        position:fixed;
-        right:5%;
+        position:absolute;
+        right:4%;
         cursor:pointer;
-        box-shadow:1px;
+        box-shadow: 5px 5px 5px 5px #888888;
         padding:10px;
         margin-top:-10px;
 `
@@ -199,6 +205,7 @@ export const TableHeader = styled.p`
     line-height: 16px;
     color: #7E858E;
     text-align:left;
+    padding-left:20px;
 `
 
 export const TableMainDiv = styled.div`
@@ -210,24 +217,47 @@ export const TableMain = styled.table`
     
 `
 export const TableHead = styled.thead`
-background: #FFFFFF;
-padding:5px;
+    background: #FFFFFF;
+    
 `
-
-
 
 export const TableTr = styled.tr`
-    background: #FFFFFF;
-
+    background: #FFFFFF;    
+    
 `
 export const TableTh = styled.th`
-   padding:10px;
+   width:${props => props.descRes ? `40%;` : `20%;`}
 `
 export const TableTd = styled.td`
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    color: #7E858E;
+    padding:10px;
+`
+export const TableCell = styled.i`
     padding:10px;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 24px;
     color: #7E858E;
+`
+
+export const Button = styled.button`
+    border-radius: 4px;
+    color:#fff;
+    border-width:0px;
+    margin-top:15px;
+    margin-right:15px;
+    height: 40px;
+    padding: 8px 20px;
+    ${props => props.update && 'background:#0B69FF;'}
+    ${props => props.add && 'background:#2DCA73;width:100px; padding: 0px 0px;'}
+    ${props => props.delete && 'background:#FF0B37;'}
+`
+export const TableFooter = styled.tr`
+     display:flex;
+     flex-direction:row;
 `

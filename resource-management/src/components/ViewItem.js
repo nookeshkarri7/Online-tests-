@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { storeSubData, changeSortAction } from '../redux/slicer'
 import axios from 'axios'
-import { Backp, Image, ItemDiv, Itemp, ItemTitle, SortDiv, ViewItemDiv } from './StyledComponents';
+import { Backp, Button, Image, ItemDiv, Itemp, ItemTitle, SortDiv, ViewItemDiv } from './StyledComponents';
 import Item from './Item';
 import ItemsTable from './ItemsTable';
 import backIcon from '../backIcon.svg'
@@ -11,7 +11,7 @@ import sortIcon from '../sortIcon.svg'
 
 const ViewItem = () => {
     const [data, setData] = useState({})
-    const { viewItem, subItems, selectedTag, showSortBy } = useSelector(({ adminReducer }) => adminReducer)
+    const { viewItem, subItems, selectedTag, showSortBy, sortByType } = useSelector(({ adminReducer }) => adminReducer)
     const dispatch = useDispatch()
     useEffect(() => {
         getResourceData()
@@ -57,6 +57,10 @@ const ViewItem = () => {
         dispatch(changeSortAction({ showSortBy: !showSortBy }))
     }
 
+    const changeSortByFun = (val) => {
+        dispatch(changeSortAction({ sortByType: val }))
+    }
+
     return (
         <ViewItemDiv>
             <ItemDiv pointer onClick={goToBack}>
@@ -64,6 +68,7 @@ const ViewItem = () => {
                 {renderBackText()}
             </ItemDiv>
             <Item data={data} view={true} />
+            <Button update>UPDATE</Button>
             <ItemDiv view>
                 <ItemTitle alignLeft>Items</ItemTitle>
                 <SearchBar placeholder='Search' type='viewData' />
@@ -73,9 +78,9 @@ const ViewItem = () => {
                 </ItemDiv>
             </ItemDiv>
             {showSortBy && <SortDiv>
-                <Itemp >Recently Added</Itemp>
-                <Itemp>Ascending</Itemp>
-                <Itemp>Descending</Itemp>
+                <Itemp highlight={sortByType === 'recent'} onClick={() => changeSortByFun("recent")}>Recently Added</Itemp>
+                <Itemp highlight={sortByType === 'asc'} onClick={() => changeSortByFun("asc")}>Ascending</Itemp>
+                <Itemp highlight={sortByType === 'desc'} onClick={() => changeSortByFun("desc")}>Descending</Itemp>
             </SortDiv>}
             {subItems.length > 0 && <ItemsTable />}
         </ViewItemDiv>

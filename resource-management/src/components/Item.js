@@ -12,8 +12,8 @@ const Item = ({ data, type, view }) => {
         link,
         title, id } = data
     return (
-        <ItemMainDiv onClick={() => { if (!view) { dispatch(storeViewItem(id)) } }}>
-            <ItemDiv>
+        <ItemMainDiv onClick={() => { if (!view) { dispatch(storeViewItem(id)) } }} bgChange={view}>
+            <ItemDiv >
                 <ItemImageDiv view={view}>
                     <Image src={icon_url} item={type} view={view} />
                 </ItemImageDiv>
