@@ -80,11 +80,20 @@ export default function AddItem() {
             dispatch(updateDataFetchStatus('Fail'))
         }
     }
+    const goToBack = () => {
+        dispatch(addAction({
+            itemName: "",
+            link: "",
+            resourceName: "",
+            description: "",
+            showAdd: false
+        }))
+    }
     return (
         <>
             <AddItemDiv>
                 <AddItemSubDiv>
-                    <ItemDiv pointer >
+                    <ItemDiv pointer onClick={goToBack} >
                         <Image src={backIcon} back />
                         {renderBackText()}
                     </ItemDiv>

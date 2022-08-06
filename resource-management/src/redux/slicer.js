@@ -41,6 +41,7 @@ const adminSlice = createSlice({
         storeViewItem: (state, action) => {
             state.viewItem = action.payload
             state.searchInput = ''
+            state.showSortBy = false
         },
         storeSubData: (state, action) => {
             return { ...state, ...action.payload }

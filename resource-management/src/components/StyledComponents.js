@@ -234,8 +234,8 @@ export const TableTr = styled.tr`
     
 `
 export const TableTh = styled.th`
-   ${props => props.descRes ? `width:40%;` : `width:20%;`}
 `
+//    ${props => props.descRes ? `width:40%;` : `width:20%;`}
 export const TableTd = styled.td`
     font-style: normal;
     font-weight: 400;
@@ -267,16 +267,14 @@ export const Button = styled.button`
     ${props => props.delete && 'background:#FF0B37;'}
     ${props => props.create && 'background:#0B69FF;width:93px;margin:auto;margin-top:20px;'}
 `
-export const TableFooter = styled.tr`
+export const TableFooter = styled.div`
      display:flex;
      flex-direction:row;
-     justify-content:space-between;
 `
-export const TableFooterInner = styled.tr`
+export const TableFooterInner = styled.div`
      display:flex;
      flex-direction:row;
      justify-content:flex-end;
-     margin-left:auto;
 `
 export const PaginationButton = styled.button`
     border-radius: 4px;
@@ -347,3 +345,8 @@ export const FORM = styled.form`
     flex-direction:column;
 `
 
+export const AlignRightt = styled.div`
+    position:absolute;
+    right:50px;
+
+`

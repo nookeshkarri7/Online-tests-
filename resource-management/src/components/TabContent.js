@@ -21,7 +21,6 @@ const TabContent = () => {
         let data = {};
         if (allResources.length === 0) {
             data = await axios.get("https://media-content.ccbp.in/website/react-assignment/resources.json")
-            console.log("🚀 ~ file: TabContent.js ~ line 24 ~ getResourceData ~ data", data)
             if (data.status === 200) {
                 dispatch(storeResources(data.data))
                 dispatch(updateDataFetchStatus('Success'))
