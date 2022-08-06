@@ -16,7 +16,11 @@ const initialState = {
     checked: [],
     subItemInfo: {},
     dataFetchStatus: "Loading",
-    showAdd: false
+    showAdd: false,
+    itemName: "",
+    link: "",
+    resourceName: "",
+    description: ""
 }
 const adminSlice = createSlice({
     name: "admin",

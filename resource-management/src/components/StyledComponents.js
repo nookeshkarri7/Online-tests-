@@ -265,6 +265,7 @@ export const Button = styled.button`
     ${props => props.update && 'background:#0B69FF;'}
     ${props => props.add && 'background:#2DCA73;width:100px; padding: 0px 0px;'}
     ${props => props.delete && 'background:#FF0B37;'}
+    ${props => props.create && 'background:#0B69FF;width:93px;margin:auto;margin-top:20px;'}
 `
 export const TableFooter = styled.tr`
      display:flex;
@@ -311,7 +312,7 @@ export const ItemFormDiv = styled.div`
 `
 export const InputBox = styled.input`
     height:30px;
-    width:320px;
+    width:100%;
     border: 1px solid #D7DFE9;
     border-radius: 2px;
 `
@@ -340,3 +341,9 @@ export const AddFormTitle = styled.p`
     color: #171F46;
     text-align:center;
 `
+
+export const FORM = styled.form`
+    display:flex;
+    flex-direction:column;
+`
+

@@ -17,7 +17,7 @@ const ViewItem = () => {
     const dispatch = useDispatch()
     useEffect(() => {
         getResourceData()
-    }, [searchInput])
+    }, [searchInput, subItems, sortByType])
 
     const getResourceData = async () => {
         let newData;
@@ -59,6 +59,13 @@ const ViewItem = () => {
             setSubItemsData(newData.filter((eachItem) => eachItem.title.toLowerCase().includes(searchInput.toLowerCase())))
         } else {
             setSubItemsData(newData.filter((eachItem) => eachItem.title.toLowerCase().includes(searchInput.toLowerCase())))
+        }
+        if (sortByType === 'recent') {
+            setSubItemsData(newData.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)))
+        } else if (sortByType === 'asc') {
+            setSubItemsData(newData.sort())
+        } else {
+            setSubItemsData(newData.sort().reverse())
         }
     }
 
