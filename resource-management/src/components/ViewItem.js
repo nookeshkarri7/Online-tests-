@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { storeSubData, changeSortAction } from '../redux/slicer'
+import { storeSubData, changeSortAction, updateDataFetchStatus } from '../redux/slicer'
 import axios from 'axios'
 import { Backp, Button, Image, ItemDiv, Itemp, ItemTitle, SortDiv, ViewItemDiv } from './StyledComponents';
 import Item from './Item';
@@ -21,27 +21,34 @@ const ViewItem = () => {
     const getResourceData = async () => {
         let newData;
         if (subItems.length === 0) {
+            dispatch(updateDataFetchStatus('Loading'))
             let data = await axios.get(` https://media-content.ccbp.in/website/react-assignment/resource/${viewItem}.json`)
-            const { description,
-                icon_url,
-                link,
-                title, id } = data.data
-            dispatch(storeSubData({
-                subItemInfo: {
+            if (data.status === 200) {
+                const { description,
+                    icon_url,
+                    link,
+                    title, id } = data.data
+                dispatch(storeSubData({
+                    subItemInfo: {
+                        description,
+                        icon_url,
+                        link,
+                        title, id
+                    }, subItems: data.data["resource_items"]
+                }))
+                setData({
                     description,
                     icon_url,
                     link,
                     title, id
-                }, subItems: data.data["resource_items"]
-            }))
-            setData({
-                description,
-                icon_url,
-                link,
-                title, id
-            })
-            newData = data.data["resource_items"]
-            setSubItemsData(data.data["resource_items"])
+                })
+                newData = data.data["resource_items"]
+                setSubItemsData(data.data["resource_items"])
+                dispatch(updateDataFetchStatus('Success'))
+            } else {
+                dispatch(updateDataFetchStatus('Fail'))
+            }
+
         } else {
             setData(subItemInfo)
             newData = subItems

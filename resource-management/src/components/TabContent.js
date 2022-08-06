@@ -4,13 +4,14 @@ import SearchBar from './SearchBar'
 import { useDispatch, useSelector } from 'react-redux';
 import Item from './Item'
 import axios from 'axios'
-import { storeResources } from '../redux/slicer'
+import { storeResources, updateDataFetchStatus } from '../redux/slicer'
 import TabMenu from './TabMenu';
 import ViewItem from './ViewItem';
+import Loader from './Loader';
 
 const TabContent = () => {
     const [data, setData] = useState([])
-    const { selectedTag, allResources, searchInput, viewItem } = useSelector(({ adminReducer }) => adminReducer)
+    const { selectedTag, allResources, searchInput, viewItem, dataFetchStatus } = useSelector(({ adminReducer }) => adminReducer)
     const dispatch = useDispatch()
     useEffect(() => {
         getResourceData()
@@ -20,7 +21,14 @@ const TabContent = () => {
         let data = {};
         if (allResources.length === 0) {
             data = await axios.get("https://media-content.ccbp.in/website/react-assignment/resources.json")
-            dispatch(storeResources(data.data))
+            console.log("🚀 ~ file: TabContent.js ~ line 24 ~ getResourceData ~ data", data)
+            if (data.status === 200) {
+                dispatch(storeResources(data.data))
+                dispatch(updateDataFetchStatus('Success'))
+            } else {
+                dispatch(updateDataFetchStatus('Fail'))
+            }
+
         } else {
             data.data = allResources
         }
@@ -33,7 +41,7 @@ const TabContent = () => {
     }
 
     return (<MainDiv>
-        {viewItem === 0 ? <>
+        {dataFetchStatus === 'Success' && (viewItem === 0 ? <>
             <TabMenu />
             <SearchBar placeholder='Search' type='resourceSearch' />
             <AllItemsDiv>
@@ -41,7 +49,7 @@ const TabContent = () => {
                     <Item data={each} type key={"items" + each.tag + each.id} view={false} />
                 )}
             </AllItemsDiv>
-        </> : <ViewItem />}
+        </> : <ViewItem />)}
     </MainDiv>
     )
 }

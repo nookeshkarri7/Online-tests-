@@ -4,6 +4,12 @@ export const devices = {
     s: `(max-width: 767px)`,
     m: `(min-width: 768px)`,
 };
+export const LoaderDiv = styled.div`
+     display:flex;
+     flex-direction:column;
+     justify-content:center;
+     align-items:center;
+`
 export const Image = styled.img`
   height:60px;
   width:60px;
@@ -11,6 +17,7 @@ export const Image = styled.img`
   ${props => props.item && `width:36px;height:36px;`}
   ${props => props.view && `width:40px;height:36px;border-radius:100px;`}
   ${props => props.back && `width:12px;height:07px;`}
+  ${props => props.noresult && `width:50vw;height:50vh;margin-top:10vh;`}
   ${props => props.sortby && 'width:15px;height:15px;cursor:pointer;margin-left:15px;margin-right:5px;'}
 `
 
