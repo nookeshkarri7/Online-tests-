@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux';
 import { storeViewItem } from '../redux/slicer'
 
 const Item = ({ data, type, view }) => {
-    console.log("🚀 ~ file: Item.js ~ line 7 ~ Item ~ view", view)
     const dispatch = useDispatch()
     const { category,
         description,

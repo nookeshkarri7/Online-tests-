@@ -13,7 +13,8 @@ const initialState = {
     subItems: [],
     showSortBy: false,
     sortByType: 'recent',
-    checked: []
+    checked: [],
+    subItemInfo: {}
 }
 const adminSlice = createSlice({
     name: "admin",
@@ -30,6 +31,7 @@ const adminSlice = createSlice({
         },
         storeViewItem: (state, action) => {
             state.viewItem = action.payload
+            state.searchInput = ''
         },
         storeSubData: (state, action) => {
             return { ...state, ...action.payload }

@@ -11,30 +11,46 @@ import sortIcon from '../sortIcon.svg'
 
 const ViewItem = () => {
     const [data, setData] = useState({})
-    const { viewItem, subItems, selectedTag, showSortBy, sortByType } = useSelector(({ adminReducer }) => adminReducer)
+    const [subItemsData, setSubItemsData] = useState([])
+    const { viewItem, subItems, selectedTag, showSortBy, sortByType, subItemInfo, searchPage, searchInput } = useSelector(({ adminReducer }) => adminReducer)
     const dispatch = useDispatch()
     useEffect(() => {
         getResourceData()
-    })
+    }, [searchInput])
 
     const getResourceData = async () => {
-        let data = {};
+        let newData;
         if (subItems.length === 0) {
-            data = await axios.get(` https://media-content.ccbp.in/website/react-assignment/resource/${viewItem}.json`)
-            console.log("🚀 ~ file: ViewItem.js ~ line 19 ~ getResourceData ~ data", data)
-            dispatch(storeSubData({ subItems: data.data["resource_items"] }))
+            let data = await axios.get(` https://media-content.ccbp.in/website/react-assignment/resource/${viewItem}.json`)
             const { description,
                 icon_url,
                 link,
                 title, id } = data.data
+            dispatch(storeSubData({
+                subItemInfo: {
+                    description,
+                    icon_url,
+                    link,
+                    title, id
+                }, subItems: data.data["resource_items"]
+            }))
             setData({
                 description,
                 icon_url,
                 link,
                 title, id
             })
+            newData = data.data["resource_items"]
+            setSubItemsData(data.data["resource_items"])
         } else {
-            data.resource_items = subItems
+            setData(subItemInfo)
+            newData = subItems
+            setSubItemsData(subItems)
+        }
+        if (searchPage === "viewData") {
+            setSubItemsData(newData.filter((eachItem) => eachItem.title.toLowerCase().includes(searchInput.toLowerCase())))
+        } else {
+            setSubItemsData(newData.filter((eachItem) => eachItem.title.toLowerCase().includes(searchInput.toLowerCase())))
         }
     }
 
@@ -50,7 +66,7 @@ const ViewItem = () => {
         return <Backp>{selected}</Backp>
     }
     const goToBack = () => {
-        dispatch(storeSubData({ viewItem: 0, subItems: [] }))
+        dispatch(storeSubData({ viewItem: 0, subItems: [], searchInput: "" }))
     }
 
     const showSortByFun = () => {
@@ -82,7 +98,7 @@ const ViewItem = () => {
                 <Itemp highlight={sortByType === 'asc'} onClick={() => changeSortByFun("asc")}>Ascending</Itemp>
                 <Itemp highlight={sortByType === 'desc'} onClick={() => changeSortByFun("desc")}>Descending</Itemp>
             </SortDiv>}
-            {subItems.length > 0 && <ItemsTable />}
+            {subItemsData.length > 0 && <ItemsTable subItems={subItemsData} />}
         </ViewItemDiv>
     )
 }

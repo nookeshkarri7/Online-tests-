@@ -253,6 +253,7 @@ export const Button = styled.button`
     margin-right:15px;
     height: 40px;
     padding: 8px 20px;
+    cursor:pointer;
     ${props => props.update && 'background:#0B69FF;'}
     ${props => props.add && 'background:#2DCA73;width:100px; padding: 0px 0px;'}
     ${props => props.delete && 'background:#FF0B37;'}

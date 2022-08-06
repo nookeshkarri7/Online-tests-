@@ -10,10 +10,9 @@ import { deleteAction } from '../redux/slicer'
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, ItemLink, SearchBarInput, TableCell, TableFooter, TableHead, TableHeader, TableMain, TableMainDiv, TableTd, TableTh, TableTr } from './StyledComponents';
 
-export default function ItemsTable() {
-    // const table = useReactTable(options)
+export default function ItemsTable({ subItems }) {
     const dispatch = useDispatch()
-    const { subItems, checked } = useSelector(({ adminReducer }) => adminReducer)
+    const { checked } = useSelector(({ adminReducer }) => adminReducer)
     const columnHelper = createColumnHelper(subItems)
     const columns = [
         columnHelper.accessor(row => row.id, {
