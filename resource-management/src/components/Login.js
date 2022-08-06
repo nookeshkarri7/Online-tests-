@@ -32,7 +32,10 @@ export default function Login() {
             toast.success("Login Successful.", {
                 position: toast.POSITION.BOTTOM_CENTER
             })
-            dispatch(loginAction({ loggedIn: true }))
+            dispatch(loginAction({
+                loggedIn: true, userName: "",
+                pass: ""
+            }))
         }
     }
     return (
