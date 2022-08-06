@@ -15,7 +15,7 @@ const ViewItem = () => {
     const dispatch = useDispatch()
     useEffect(() => {
         getResourceData()
-    }, [])
+    })
 
     const getResourceData = async () => {
         let data = {};
@@ -77,7 +77,7 @@ const ViewItem = () => {
                 <Itemp>Ascending</Itemp>
                 <Itemp>Descending</Itemp>
             </SortDiv>}
-            <ItemsTable />
+            {subItems.length > 0 && <ItemsTable />}
         </ViewItemDiv>
     )
 }

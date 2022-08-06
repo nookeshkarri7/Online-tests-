@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
 export const devices = {
     s: `(max-width: 767px)`,
@@ -191,4 +191,43 @@ export const SortDiv = styled.div`
         box-shadow:1px;
         padding:10px;
         margin-top:-10px;
+`
+
+export const TableHeader = styled.p`
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 16px;
+    color: #7E858E;
+    text-align:left;
+`
+
+export const TableMainDiv = styled.div`
+    
+`
+
+
+export const TableMain = styled.table`
+    
+`
+export const TableHead = styled.thead`
+background: #FFFFFF;
+padding:5px;
+`
+
+
+
+export const TableTr = styled.tr`
+    background: #FFFFFF;
+
+`
+export const TableTh = styled.th`
+   padding:10px;
+`
+export const TableTd = styled.td`
+    padding:10px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    color: #7E858E;
 `
