@@ -4,11 +4,12 @@ import {
     flexRender,
     getCoreRowModel,
     useReactTable,
-    getPaginationRowModel
+    getPaginationRowModel,
+
 } from '@tanstack/react-table'
 import { deleteAction } from '../redux/slicer'
 import { useDispatch, useSelector } from 'react-redux';
-import { Button, ItemLink, SearchBarInput, TableCell, TableFooter, TableHead, TableHeader, TableMain, TableMainDiv, TableTd, TableTh, TableTr } from './StyledComponents';
+import { Button, ItemLink, PaginationButton, SearchBarInput, TableCell, TableFooter, TableFooterInner, TableHead, TableHeader, TableMain, TableMainDiv, TableTd, TableTh, TableTr } from './StyledComponents';
 
 export default function ItemsTable({ subItems }) {
     const dispatch = useDispatch()
@@ -17,9 +18,10 @@ export default function ItemsTable({ subItems }) {
     const columns = [
         columnHelper.accessor(row => row.id, {
             id: 'id',
-            cell: info => <SearchBarInput type="checkbox" id={info.getValue()} value={info.getValue()} checkbox onChange={checkToDelete}
-                checked={checked.indexOf(info.getValue()) >= 0} />,
+            cell: info => <TableCell><SearchBarInput type="checkbox" id={info.getValue()} value={info.getValue()} checkbox onChange={checkToDelete}
+                checked={checked.indexOf(info.getValue()) >= 0} /></TableCell>,
             header: () => <TableHeader></TableHeader>,
+            // width: 100
         }),
         columnHelper.accessor(row => row.title, {
             id: 'title',
@@ -56,10 +58,9 @@ export default function ItemsTable({ subItems }) {
         columns,
         getCoreRowModel: getCoreRowModel(),
         getPaginationRowModel: getPaginationRowModel(),
+        pageSize: 2
     })
-
-
-
+    // table.setPageSize(Number(6))
     return (
         <TableMainDiv className="p-2">
             <TableMain>
@@ -67,16 +68,20 @@ export default function ItemsTable({ subItems }) {
                     {table.getHeaderGroups().map(headerGroup => (
                         <TableTr key={headerGroup.id} >
                             {
-                                headerGroup.headers.map(header => (
-                                    <TableTh key={header.id} descRes={header.index === 2} checkRes={header.index == 0}>
-                                        {header.isPlaceholder
-                                            ? null
-                                            : flexRender(
-                                                header.column.columnDef.header,
-                                                header.getContext()
-                                            )}
-                                    </TableTh>
-                                ))
+                                headerGroup.headers.map(header => {
+                                    console.log("🚀 ~ file: ItemsTable.js ~ line 81 ~ ItemsTable ~ header", header)
+                                    return (
+                                        <TableTh key={header.id} >
+                                            {header.isPlaceholder
+                                                ? null
+                                                : flexRender(
+                                                    header.column.columnDef.header,
+                                                    header.getContext()
+                                                )}
+                                        </TableTh>
+                                    )
+                                })
+
                             }
                         </TableTr>
                     ))}
@@ -92,13 +97,40 @@ export default function ItemsTable({ subItems }) {
                         </TableTr>
                     ))}
                 </tbody>
-                <tfoot>
-                    <TableFooter>
-                        <Button add={checked.length === 0}>ADD ITEM</Button>
-                        <Button disabled={checked.length === 0} delete={checked.length > 0}
-                            onClick={deleteItems}>DELETE</Button>
-                    </TableFooter>
-                </tfoot>
+
+                <TableFooter>
+                    <Button add={checked.length === 0}>ADD ITEM</Button>
+                    <Button disabled={checked.length === 0} delete={checked.length > 0}
+                        onClick={deleteItems}>DELETE</Button>
+
+                    <TableFooterInner>
+                        <PaginationButton
+                            onClick={() => table.setPageIndex(0)}
+                            disabled={!table.getCanPreviousPage()}
+                        >
+                            {'<<'}
+                        </PaginationButton>
+                        <PaginationButton
+                            onClick={() => table.previousPage()}
+                            disabled={!table.getCanPreviousPage()}
+                        >
+                            {'<'}
+                        </PaginationButton>
+                        <PaginationButton
+                            onClick={() => table.nextPage()}
+                            disabled={!table.getCanNextPage()}
+                        >
+                            {'>'}
+                        </PaginationButton>
+                        <PaginationButton
+                            onClick={() => table.setPageIndex(table.getPageCount() - 1)}
+                            disabled={!table.getCanNextPage()}
+                        >
+                            {'>>'}
+                        </PaginationButton>
+                    </TableFooterInner>
+                </TableFooter>
+
             </TableMain>
         </TableMainDiv >
 

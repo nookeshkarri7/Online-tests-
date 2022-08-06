@@ -233,7 +233,7 @@ export const TableTr = styled.tr`
     
 `
 export const TableTh = styled.th`
-   width:${props => props.descRes ? `40%;` : `20%;`}
+   ${props => props.descRes ? `width:40%;` : `width:20%;`}
 `
 export const TableTd = styled.td`
     font-style: normal;
@@ -243,7 +243,7 @@ export const TableTd = styled.td`
     color: #7E858E;
     padding:10px;
 `
-export const TableCell = styled.i`
+export const TableCell = styled.div`
     padding:10px;
     font-style: normal;
     font-weight: 400;
@@ -268,4 +268,24 @@ export const Button = styled.button`
 export const TableFooter = styled.tr`
      display:flex;
      flex-direction:row;
+     justify-content:space-between;
+`
+export const TableFooterInner = styled.tr`
+     display:flex;
+     flex-direction:row;
+     justify-content:flex-end;
+     margin-left:auto;
+`
+export const PaginationButton = styled.button`
+    border-radius: 4px;
+    color:black;
+    background:#fff;
+    border-width:0px;
+    margin-top:15px;
+    margin-right:15px;
+    height: 30px;
+    padding: 8px 20px;
+    cursor:pointer;
+    border:1px solid black;
+    ${props => props.disabled && 'background:#F5F5F5;'}
 `
