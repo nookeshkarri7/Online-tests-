@@ -7,7 +7,7 @@ import {
     getPaginationRowModel,
 
 } from '@tanstack/react-table'
-import { deleteAction } from '../redux/slicer'
+import { deleteAction, addAction } from '../redux/slicer'
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, ItemLink, PaginationButton, SearchBarInput, TableCell, TableFooter, TableFooterInner, TableHead, TableHeader, TableMain, TableMainDiv, TableTd, TableTh, TableTr } from './StyledComponents';
 
@@ -52,7 +52,9 @@ export default function ItemsTable({ subItems }) {
     const deleteItems = () => {
         dispatch(deleteAction({ subItems: subItems.filter((eachSub) => checked.indexOf(eachSub.id) == -1), checked: [] }))
     }
-
+    const openAddItem = () => {
+        dispatch(addAction({ showAdd: true }))
+    }
     const table = useReactTable({
         data: subItems,
         columns,
@@ -99,7 +101,7 @@ export default function ItemsTable({ subItems }) {
                 </tbody>
 
                 <TableFooter>
-                    <Button add={checked.length === 0}>ADD ITEM</Button>
+                    <Button add={checked.length === 0} onClick={openAddItem}>ADD ITEM</Button>
                     <Button disabled={checked.length === 0} delete={checked.length > 0}
                         onClick={deleteItems}>DELETE</Button>
 

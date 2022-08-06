@@ -19,7 +19,8 @@ export const Image = styled.img`
   ${props => props.back && `width:12px;height:07px;`}
   ${props => props.noresult && `width:50vw;height:50vh;margin-top:10vh;`}
   ${props => props.sortby && 'width:15px;height:15px;cursor:pointer;margin-left:15px;margin-right:5px;'}
-`
+  ${props => props.addItem && `width:50vw;height:100vh;`}
+  `
 
 export const HeaderDiv = styled.div`
         padding-top:16px;
@@ -288,4 +289,54 @@ export const PaginationButton = styled.button`
     cursor:pointer;
     border:1px solid black;
     ${props => props.disabled && 'background:#F5F5F5;'}
+`
+export const AddItemDiv = styled.div`
+    display:flex;
+    flex-direction:row;
+`
+export const AddItemSubDiv = styled.div`
+    display:flex;
+    flex-direction:column;
+`
+
+export const AddItemImageDiv = styled.div`
+    margin-left:auto;
+`
+
+
+export const ItemFormDiv = styled.div`
+    display:flex;
+    flex-direction:column;
+
+`
+export const InputBox = styled.input`
+    height:30px;
+    width:320px;
+    border: 1px solid #D7DFE9;
+    border-radius: 2px;
+`
+export const LabelBox = styled.label`
+    margin-top:25px;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: #7E858E;
+    margin-bottom:6px;
+`
+export const TextBox = styled.textarea`
+    height:100px;
+    width:320px;
+    border: 1px solid #D7DFE9;
+    border-radius: 2px;
+`
+
+export const AddFormTitle = styled.p`
+    font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 40px;
+    color: #171F46;
+    text-align:center;
 `

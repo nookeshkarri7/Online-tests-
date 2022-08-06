@@ -15,7 +15,8 @@ const initialState = {
     sortByType: 'recent',
     checked: [],
     subItemInfo: {},
-    dataFetchStatus: "Loading"
+    dataFetchStatus: "Loading",
+    showAdd: false
 }
 const adminSlice = createSlice({
     name: "admin",
@@ -46,7 +47,10 @@ const adminSlice = createSlice({
         deleteAction: (state, action) => {
             return { ...state, ...action.payload }
         },
+        addAction: (state, action) => {
+            return { ...state, ...action.payload }
+        },
     }
 })
-export const { changeTab, changeSearchInput, storeResources, storeViewItem, storeSubData, changeSortAction, deleteAction, updateDataFetchStatus } = adminSlice.actions
+export const { changeTab, changeSearchInput, storeResources, storeViewItem, storeSubData, changeSortAction, deleteAction, updateDataFetchStatus, addAction } = adminSlice.actions
 export default adminSlice.reducer

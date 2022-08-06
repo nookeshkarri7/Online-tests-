@@ -8,11 +8,12 @@ import ItemsTable from './ItemsTable';
 import backIcon from '../backIcon.svg'
 import SearchBar from './SearchBar';
 import sortIcon from '../sortIcon.svg'
+import AddItem from './AddItem';
 
 const ViewItem = () => {
     const [data, setData] = useState({})
     const [subItemsData, setSubItemsData] = useState([])
-    const { viewItem, subItems, selectedTag, showSortBy, sortByType, subItemInfo, searchPage, searchInput } = useSelector(({ adminReducer }) => adminReducer)
+    const { viewItem, subItems, showAdd, selectedTag, showSortBy, sortByType, subItemInfo, searchPage, searchInput } = useSelector(({ adminReducer }) => adminReducer)
     const dispatch = useDispatch()
     useEffect(() => {
         getResourceData()
@@ -83,29 +84,34 @@ const ViewItem = () => {
     const changeSortByFun = (val) => {
         dispatch(changeSortAction({ sortByType: val }))
     }
-
-    return (
-        <ViewItemDiv>
-            <ItemDiv pointer onClick={goToBack}>
-                <Image src={backIcon} back />
-                {renderBackText()}
+    const getDetails = () => <>
+        <ItemDiv pointer onClick={goToBack}>
+            <Image src={backIcon} back />
+            {renderBackText()}
+        </ItemDiv>
+        <Item data={data} view={true} />
+        <Button update>UPDATE</Button>
+        <ItemDiv view>
+            <ItemTitle alignLeft>Items</ItemTitle>
+            <SearchBar placeholder='Search' type='viewData' />
+            <ItemDiv pointer onClick={showSortByFun}>
+                <Image src={sortIcon} sortby />
+                <Itemp>SORT</Itemp>
             </ItemDiv>
-            <Item data={data} view={true} />
-            <Button update>UPDATE</Button>
-            <ItemDiv view>
-                <ItemTitle alignLeft>Items</ItemTitle>
-                <SearchBar placeholder='Search' type='viewData' />
-                <ItemDiv pointer onClick={showSortByFun}>
-                    <Image src={sortIcon} sortby />
-                    <Itemp>SORT</Itemp>
-                </ItemDiv>
-            </ItemDiv>
-            {showSortBy && <SortDiv>
+        </ItemDiv>
+        {
+            showSortBy && <SortDiv>
                 <Itemp highlight={sortByType === 'recent'} onClick={() => changeSortByFun("recent")}>Recently Added</Itemp>
                 <Itemp highlight={sortByType === 'asc'} onClick={() => changeSortByFun("asc")}>Ascending</Itemp>
                 <Itemp highlight={sortByType === 'desc'} onClick={() => changeSortByFun("desc")}>Descending</Itemp>
-            </SortDiv>}
-            {subItemsData.length > 0 && <ItemsTable subItems={subItemsData} />}
+            </SortDiv>
+        }
+        {subItemsData.length > 0 && !showAdd && <ItemsTable subItems={subItemsData} />}
+    </>
+
+    return (
+        <ViewItemDiv>
+            {!showAdd ? getDetails() : <AddItem />}
         </ViewItemDiv>
     )
 }
