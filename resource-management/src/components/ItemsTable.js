@@ -79,7 +79,7 @@ export default function ItemsTable({ subItems }) {
     }, [sortByType])
     // table.setPageSize(Number(6))
     return (
-        <TableMainDiv className="p-2">
+        <TableMainDiv >
             <TableMain>
                 <TableHead>
                     {table.getHeaderGroups().map(headerGroup => (

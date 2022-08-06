@@ -34,9 +34,7 @@ export default function Login() {
             })
             dispatch(loginAction({ loggedIn: true }))
         }
-
     }
-
     return (
         <>
             <AddItemDiv>

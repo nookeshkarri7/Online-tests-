@@ -84,6 +84,9 @@ export const SearchBarMainDiv = styled.div`
     margin-top:20px;
     margin-bottom:20px;
     background:#fff;
+    @media ${devices.s}{
+        width:90%;
+    }
 `
 
 export const SearchBarDiv = styled.div`
@@ -130,6 +133,9 @@ export const ItemMainDiv = styled.div`
     cursor:pointer;
     background:#fff;
     ${props => props.bgChange && 'background:#F5F5F5;border-width:0px;'}
+    @media ${devices.s}{
+        width:95%;
+    }
 `
 export const ItemTitleDiv = styled.div`
     display:flex;
@@ -186,6 +192,9 @@ export const ItemLink = styled.a`
 `
 
 export const ViewItemDiv = styled.div`
+@media ${devices.s}{
+    height:150vh;
+}
     
 `
 
@@ -219,10 +228,15 @@ export const TableHeader = styled.p`
 
 export const TableMainDiv = styled.div`
     
+    @media ${devices.s}{
+        overflow-x:scroll;
+    }
+    
 `
 
 
 export const TableMain = styled.table`
+
     
 `
 export const TableHead = styled.thead`
@@ -302,6 +316,9 @@ export const AddItemSubDiv = styled.div`
 
 export const AddItemImageDiv = styled.div`
     margin-left:auto;
+    @media ${devices.s}{
+        display:none;
+    }
 `
 
 
@@ -348,9 +365,13 @@ export const FORM = styled.form`
 `
 
 export const AlignRightt = styled.div`
-    position:absolute;
-    right:50px;
-
+position:absolute;
+right:50px;
+    @media ${devices.s}{
+        position:relative;
+        margin-left:50px;
+        
+    }
 `
 export const Menu = styled.div`
     width:70px;

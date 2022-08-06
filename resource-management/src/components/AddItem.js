@@ -64,7 +64,7 @@ export default function AddItem() {
                     title: itemName,
                     link,
                     description,
-                    createdAt: new Date(),
+                    createdAt: new Date().toISOString(),
                     id: (subItems.length + 1).toString()
                 }]
             }))

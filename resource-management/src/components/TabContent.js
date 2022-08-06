@@ -7,7 +7,6 @@ import axios from 'axios'
 import { storeResources, updateDataFetchStatus } from '../redux/slicer'
 import TabMenu from './TabMenu';
 import ViewItem from './ViewItem';
-import Loader from './Loader';
 
 const TabContent = () => {
     const [data, setData] = useState([])
