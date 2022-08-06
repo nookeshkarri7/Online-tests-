@@ -20,7 +20,12 @@ const initialState = {
     itemName: "",
     link: "",
     resourceName: "",
-    description: ""
+    description: "",
+    userName: "admin",
+    pass: "admin",
+    demoUserName: "admin",
+    demoPass: "admin",
+    loggedIn: false,
 }
 const adminSlice = createSlice({
     name: "admin",
@@ -55,7 +60,10 @@ const adminSlice = createSlice({
         addAction: (state, action) => {
             return { ...state, ...action.payload }
         },
+        loginAction: (state, action) => {
+            return { ...state, ...action.payload }
+        },
     }
 })
-export const { changeTab, changeSearchInput, storeResources, storeViewItem, storeSubData, changeSortAction, deleteAction, updateDataFetchStatus, addAction } = adminSlice.actions
+export const { changeTab, changeSearchInput, storeResources, storeViewItem, storeSubData, changeSortAction, deleteAction, updateDataFetchStatus, addAction, loginAction } = adminSlice.actions
 export default adminSlice.reducer

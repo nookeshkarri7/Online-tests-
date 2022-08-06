@@ -3,18 +3,20 @@ import Loader from './components/Loader';
 import { useSelector } from 'react-redux';
 import TabContent from './components/TabContent';
 import FailureView from './components/FailureView';
-import { ToastContainer, toast } from 'react-toastify';
-// import {  } from 'react-toastify';
-
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Login from './components/Login';
+
 function App() {
-  const { dataFetchStatus } = useSelector(({ adminReducer }) => adminReducer)
+  const { dataFetchStatus, loggedIn } = useSelector(({ adminReducer }) => adminReducer)
 
   return (
     <div className="App">
-      <Header />
-      {dataFetchStatus !== 'Fail' ? <TabContent /> : <FailureView />}
-      {dataFetchStatus === 'Loading' && <Loader />}
+      {loggedIn && <Header />}
+      {dataFetchStatus !== 'Fail' && loggedIn && <TabContent />}
+      {dataFetchStatus === 'Loading' && loggedIn && <Loader />}
+      {dataFetchStatus === 'Fail' && loggedIn && <FailureView />}
+      {!loggedIn && <Login />}
       <ToastContainer />
     </div>
   );

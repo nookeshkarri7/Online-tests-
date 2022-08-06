@@ -17,7 +17,7 @@ const ViewItem = () => {
     const dispatch = useDispatch()
     useEffect(() => {
         getResourceData()
-    }, [searchInput, subItems,])
+    }, [searchInput, subItems])
 
     const getResourceData = async () => {
         let newData;

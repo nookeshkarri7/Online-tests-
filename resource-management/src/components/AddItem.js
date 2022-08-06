@@ -1,5 +1,5 @@
 import React from 'react'
-import { ItemDiv, Image, Backp, AddItemDiv, AddItemSubDiv, ItemImageDiv, AddItemImageDiv, ItemTitle, ItemFormDiv, InputBox, LabelBox, TextBox, AddFormTitle, FORM, Button } from './StyledComponents'
+import { ItemDiv, Image, Backp, AddItemDiv, AddItemSubDiv, AddItemImageDiv, ItemFormDiv, InputBox, LabelBox, TextBox, AddFormTitle, FORM, Button } from './StyledComponents'
 import backIcon from '../backIcon.svg'
 import addItemSidebar from '../addItemSidebar.png'
 import { addAction, updateDataFetchStatus } from '../redux/slicer'

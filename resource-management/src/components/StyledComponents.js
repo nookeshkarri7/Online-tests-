@@ -20,6 +20,7 @@ export const Image = styled.img`
   ${props => props.noresult && `width:50vw;height:50vh;margin-top:10vh;`}
   ${props => props.sortby && 'width:15px;height:15px;cursor:pointer;margin-left:15px;margin-right:5px;'}
   ${props => props.addItem && `width:50vw;height:100vh;`}
+  ${props => props.login && `width:40vw;height:100vh;`}
   `
 
 export const HeaderDiv = styled.div`
@@ -37,7 +38,7 @@ export const HeaderDiv = styled.div`
         background:#fff;
     `
 export const ImageUserDiv = styled.div`
-    
+    cursor:pointer;
 `
 
 export const TabMenuMainDiv = styled.div`
@@ -296,6 +297,7 @@ export const AddItemDiv = styled.div`
 export const AddItemSubDiv = styled.div`
     display:flex;
     flex-direction:column;
+    ${props => props.login && 'margin:auto;'}
 `
 
 export const AddItemImageDiv = styled.div`
@@ -348,5 +350,18 @@ export const FORM = styled.form`
 export const AlignRightt = styled.div`
     position:absolute;
     right:50px;
+
+`
+export const Menu = styled.div`
+    width:70px;
+    height:30px;
+    background: #FFFFFF;
+    border-radius: 4px;
+    position:absolute;
+    right:5%;
+    cursor:pointer;
+    box-shadow: 2px 2px 2px 2px #888888;
+    padding:10px;
+    margin-top:50px;
 
 `

@@ -51,7 +51,7 @@ export default function ItemsTable({ subItems }) {
     }
 
     const deleteItems = () => {
-        dispatch(deleteAction({ subItems: subItems.filter((eachSub) => checked.indexOf(eachSub.id) == -1), checked: [], showSortBy: false }))
+        dispatch(deleteAction({ subItems: subItems.filter((eachSub) => checked.indexOf(eachSub.id) === -1), checked: [], showSortBy: false }))
         toast.success(checked.length + " Item" + (checked.length <= 1 ? '' : 's') + " Deleted Successfully", {
             position: toast.POSITION.BOTTOM_CENTER
         })
